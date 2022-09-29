@@ -8,7 +8,7 @@ esac
 export OSH=/home/diego/.oh-my-bash
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="modern"
+OSH_THEME="pro"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -123,8 +123,7 @@ alias t='python2 ~/term-utils/t/t.py --task-dir ~/tasks --list task'
 function repos {
 	PS3="Ir a: "
 	files=`ls ~/Documents/repos`
-	select repo_choice in $files 
-	do
+	select repo_choice in $files ; do
 		if [ ! -z "$repo_choice" ] ; then 
 			repo_dir=~/Documents/repos/$repo_choice
 			cd $repo_dir
@@ -135,4 +134,3 @@ function repos {
 . ~/term-utils/z/z.sh
 t
 export PATH=/usr/bin:$PATH
-

@@ -1,0 +1,7 @@
+!
+! Swap Caps_Lock and Escape. Assign Multi_key to Alt_R 
+!
+clear Lock
+keycode 66 = Escape
+keycode 9 = Caps_Lock
+keycode 108 = Multi_key
