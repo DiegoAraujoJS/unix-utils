@@ -208,14 +208,5 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-hi Pmenu ctermfg=black ctermbg=DarkGreen 
-hi PmenuSel ctermfg=white ctermbg=DarkGreen 
-
-hi CocErrorSign ctermfg=red  guibg=red
-hi CocErrorFloat ctermfg=white ctermbg=red
-
-hi CocInfoSign ctermfg=blue 
-hi CocInfoFloat ctermfg=white ctermbg=blue
-
-hi CocWarningSign ctermfg=white ctermbg=yellow
-
+hi CocFloating ctermfg=12
+hi CocFloating guifg=#15aabf
