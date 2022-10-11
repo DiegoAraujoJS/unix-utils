@@ -8,8 +8,8 @@ esac
 export OSH=/home/diego/.oh-my-bash
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="pro"
-
+OSH_THEME="powerline-plain"
+ 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -130,7 +130,8 @@ function repos {
 			break
 		fi
 	done
+	vim .
 }
+
 . ~/term-utils/z/z.sh
 t
-export PATH=/usr/bin:$PATH
