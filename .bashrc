@@ -135,3 +135,4 @@ function repos {
 
 . ~/term-utils/z/z.sh
 t
+export PATH=/usr/bin:$PATH

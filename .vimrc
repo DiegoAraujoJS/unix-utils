@@ -208,5 +208,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-hi CocFloating ctermfg=12
-hi CocFloating guifg=#15aabf
+hi CocFloating ctermfg=12 guifg=#15aabf
+hi CocErrorHighlight ctermfg=160  guifg=#ff0000
+hi CocErrorSign ctermfg=160 guifg=#ff0000
