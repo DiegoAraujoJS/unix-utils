@@ -1,5 +1,6 @@
 local nnoremap = require("diego.keymap").nnoremap
 local nvim_lsp = require("lspconfig")
+local util = require("lspconfig/util")
 
 local function keymaps(_, bufnr)
     local bufopts = {
@@ -47,6 +48,9 @@ local function lsp_handlers()
         style = "minimal",
         border = "rounded"
     })
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = false
+    })
 end
 
 local function on_attach(client, bufnr)
@@ -56,6 +60,8 @@ local function on_attach(client, bufnr)
         print("has definition provider")
         vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
     end
+
+    print("lsp server active")
 
     -- add server capabilities handlers
     highlighting(client, bufnr)
@@ -93,6 +99,19 @@ local servers = {
                     library = vim.api.nvim_get_runtime_file("", true),
                     checkThirdParty = false
                 }
+            }
+        }
+    },
+    gopls = {
+        cmd = { "gopls", "serve" },
+        filetypes = { "go", "gomod" },
+        root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+        settings = {
+            gopls = {
+                analyses = {
+                    unusedparams = true
+                },
+                staticcheck = true
             }
         }
     }
