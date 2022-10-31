@@ -117,7 +117,8 @@ local servers = {
     },
     tsserver = {
         filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript" },
-        cmd = { "typescript-language-server", "--stdio" }
+        cmd = { "typescript-language-server", "--stdio" },
+        root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
     }
 }
 
