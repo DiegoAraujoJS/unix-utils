@@ -114,6 +114,10 @@ local servers = {
                 staticcheck = true
             }
         }
+    },
+    tsserver = {
+        filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript" },
+        cmd = { "typescript-language-server", "--stdio" }
     }
 }
 
