@@ -1,5 +1,5 @@
 set nocompatible              " be iMproved, required
-" set the runtime path to include Vundle and initialize
+"jset the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -15,6 +15,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'posva/vim-vue'
 Plugin 'junegunn/fzf'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'godlygeek/tabular'
+Plugin 'preservim/vim-markdown'
+Plugin 'folke/tokyonight.nvim'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -45,7 +48,7 @@ call vundle#end()            " required
 map <F2> :echo 'Current time is ' . strftime('%c')<CR>
 nmap <F3> :FZF <CR>
 
-syntax on
+syntax on 
 set number
 set ignorecase
 set smartcase
@@ -208,6 +211,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-hi CocFloating ctermfg=12 guifg=#15aabf
-hi CocErrorHighlight ctermfg=160  guifg=#ff0000
-hi CocErrorSign ctermfg=160 guifg=#ff0000
+colorscheme tokyonight
+
+nnoremap + :vertical resize +5<CR>
+nnoremap - :vertical resize -5<CR>
