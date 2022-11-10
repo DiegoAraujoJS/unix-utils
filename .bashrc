@@ -137,5 +137,7 @@ function repos {
 
 export PATH=/usr/bin:$PATH
 alias treer='tree -I node_modules'
+alias cpc='xclip -selection clipboard'
 alias luamake=/luamake
 export GO111MODULE=on
+source /etc/profile.d/go.sh
