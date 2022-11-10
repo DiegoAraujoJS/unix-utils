@@ -9,7 +9,6 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.smartindent = true
 vim.opt.wrap = true
-vim.opt.ignorecase = true
 
 vim.opt.completeopt = "menu,noinsert,noselect"
 
