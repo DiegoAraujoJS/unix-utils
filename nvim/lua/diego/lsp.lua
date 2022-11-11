@@ -72,9 +72,14 @@ local function on_attach(client, bufnr)
     keymaps(client, bufnr)
 end
 
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities
+local status, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if status then
+    capabilities = cmp_nvim_lsp.default_capabilities()
+else
+    capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+end
 
 local opts = {
     on_attach = on_attach,

@@ -7,8 +7,10 @@ nnoremap("<leader>ll", "<cmd>lua InlineDiagnostics() <CR>")
 nnoremap("<leader>e", "<cmd>lua vim.diagnostic.open_float() <CR>")
 
 --telescope
-local builtin = require("telescope.builtin")
-nnoremap('<leader>ff', builtin.find_files)
-nnoremap('<leader>fg', builtin.live_grep)
-nnoremap('<leader>fb', builtin.buffers)
-nnoremap('<leader>fh', builtin.help_tags)
+local status, builtin = pcall(require, 'telescope.builtin')
+if status then
+    nnoremap('<leader>ff', builtin.find_files)
+    nnoremap('<leader>fg', builtin.live_grep)
+    nnoremap('<leader>fb', builtin.buffers)
+    nnoremap('<leader>fh', builtin.help_tags)
+end

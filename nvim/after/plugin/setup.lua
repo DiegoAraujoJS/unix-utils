@@ -1,13 +1,20 @@
-require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
+local status, mason = pcall(require, 'mason')
+if status then
+    mason.setup({
+        ui = {
+            icons = {
+                package_installed = "✓",
+                package_pending = "➜",
+                package_uninstalled = "✗"
+            }
         }
-    }
-})
-require('lualine').setup {}
+    })
+end
+
+local status, lualine = pcall(require, 'lualine')
+if status then
+    lualine.setup {}
+end
 
 local status, cmp = pcall(require, 'cmp')
 if status then
