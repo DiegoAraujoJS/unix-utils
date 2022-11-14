@@ -167,7 +167,8 @@ local servers = {
         -- true
         analyze_open_documents_only = false,
     },
-    dockerls = {}
+    dockerls = {},
+    jsonls = {}
 }
 
 for server_name, _ in pairs(servers) do
