@@ -6,6 +6,8 @@ nnoremap("<leader>wr", "<cmd>lua InvertWrap()<CR>") -- look at InvertWrap in die
 nnoremap("<leader>ll", "<cmd>lua InlineDiagnostics() <CR>")
 nnoremap("<leader>e", "<cmd>lua vim.diagnostic.open_float() <CR>")
 
+for _, key in pairs({ "h", "l", "j", "k" }) do nnoremap("<Tab>" .. key, "<C-w>" .. key) end
+
 --telescope
 local status, builtin = pcall(require, 'telescope.builtin')
 if status then
