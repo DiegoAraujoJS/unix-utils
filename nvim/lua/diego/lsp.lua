@@ -99,7 +99,7 @@ local servers = {
         settings = {
             Lua = {
                 diagnostics = {
-                    globals = { "vim" },
+                    globals = { "vim", "use" },
                 },
                 workspace = {
                     library = vim.api.nvim_get_runtime_file("", true),
@@ -130,7 +130,7 @@ local servers = {
         filetypes = { "vue" }
     },
     omnisharp = {
-        cmd = { "dotnet", "/home/diego/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
+        cmd = { "dotnet", "/Users/diegoaraujo/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
 
         -- Enables support for reading code style, naming convention and analyzer
         -- settings from .editorconfig.
@@ -168,7 +168,8 @@ local servers = {
         analyze_open_documents_only = false,
     },
     dockerls = {},
-    jsonls = {}
+    jsonls = {},
+    bashls = {},
 }
 
 for server_name, _ in pairs(servers) do

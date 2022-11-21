@@ -21,4 +21,7 @@ return require('packer').startup(function()
         tag = "v<CurrentMajor>.*",
         requires = { 'hrsh7th/cmp-nvim-lsp' }
     }
+    use {
+        "nvim-treesitter/nvim-treesitter",
+    }
 end)
