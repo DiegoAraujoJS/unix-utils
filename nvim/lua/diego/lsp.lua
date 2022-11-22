@@ -13,18 +13,33 @@ local function keymaps(_, bufnr)
     nnoremap("gd", vim.lsp.buf.definition, bufopts)
     nnoremap("<leader>s", vim.lsp.buf.signature_help, bufopts)
     nnoremap("<leader>d", vim.lsp.buf.type_definition, bufopts)
-    nnoremap("<leader>a", vim.lsp.buf.document_highlight, bufopts)
+    nnoremap("<leader>[d", vim.diagnostic.goto_next, bufopts)
+    nnoremap("<leader>]d", vim.diagnostic.goto_prev, bufopts)
 end
 
 local function highlighting(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
         print("has highlighting")
+        local highlighted = false
         vim.api.nvim_create_autocmd("CursorHold", {
             callback = function()
-                vim.schedule(vim.lsp.buf.document_highlight)
+                if not highlighted then
+                    vim.schedule(vim.lsp.buf.document_highlight)
+                    highlighted = true
+                end
             end,
-            group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true }),
-            buffer = bufnr
+            buffer = bufnr,
+            group = vim.api.nvim_create_augroup("LspDocumentHighlight", {})
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            callback = function()
+                if highlighted then
+                    vim.schedule(vim.lsp.buf.clear_references)
+                    highlighted = false
+                end
+            end,
+            buffer = bufnr,
+            group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = false })
         })
     end
 end
