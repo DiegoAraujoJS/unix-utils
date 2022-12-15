@@ -1,5 +1,8 @@
 local nnoremap = require("diego.keymap").nnoremap
-local nvim_lsp = require("lspconfig")
+local status, nvim_lsp = pcall(require, "lspconfig")
+if not status then
+	return 0
+end
 local util = require("lspconfig/util")
 
 local function keymaps(_, bufnr)
