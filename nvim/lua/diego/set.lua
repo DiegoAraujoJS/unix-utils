@@ -14,3 +14,5 @@ vim.opt.ignorecase = true
 vim.opt.completeopt = "menu,noinsert,noselect"
 
 vim.g.mapleader = " "
+
+vim.opt.updatetime = 300

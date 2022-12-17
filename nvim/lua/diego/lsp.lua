@@ -1,7 +1,7 @@
 local nnoremap = require("diego.keymap").nnoremap
 local status, nvim_lsp = pcall(require, "lspconfig")
 if not status then
-	return 0
+    return 0
 end
 local util = require("lspconfig/util")
 
@@ -22,12 +22,26 @@ end
 local function highlighting(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
         print("has highlighting")
+        local highlighted = false
         vim.api.nvim_create_autocmd("CursorHold", {
             callback = function()
-                vim.schedule(vim.lsp.buf.document_highlight)
+                if not highlighted then
+                    vim.schedule(vim.lsp.buf.document_highlight)
+                    highlighted = true
+                end
             end,
-            group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true }),
-            buffer = bufnr
+            buffer = bufnr,
+            group = vim.api.nvim_create_augroup("LspDocumentHighlight", {})
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            callback = function()
+                if highlighted then
+                    vim.schedule(vim.lsp.buf.clear_references)
+                    highlighted = false
+                end
+            end,
+            buffer = bufnr,
+            group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = false })
         })
     end
 end
@@ -171,7 +185,8 @@ local servers = {
         analyze_open_documents_only = false,
     },
     dockerls = {},
-    jsonls = {}
+    jsonls = {},
+    bashls = {},
 }
 
 for server_name, _ in pairs(servers) do
