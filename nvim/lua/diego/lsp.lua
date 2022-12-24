@@ -47,8 +47,8 @@ local function highlighting(client, bufnr)
 end
 
 local function formatting(client, bufnr)
-    if client.server_capabilities.documentFormattingProvider then
-        print("has formatting")
+    if client.server_capabilities.documentFormattingProvider and
+        (vim.bo.filetype ~= "javascript" and vim.bo.filetype ~= "php") then
         vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function()
                 vim.lsp.buf.formatting_seq_sync()
@@ -187,6 +187,7 @@ local servers = {
     dockerls = {},
     jsonls = {},
     bashls = {},
+    intelephense = {},
 }
 
 for server_name, _ in pairs(servers) do

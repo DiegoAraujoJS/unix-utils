@@ -39,5 +39,4 @@ if status then
     })
 
     vim.cmd("colorscheme tokyonight")
-    --vim.cmd [[hi Normal guibg=NONE ctermbg=NONE]]
 end

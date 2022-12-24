@@ -23,4 +23,7 @@ return require('packer').startup(function()
     use {
         "tpope/vim-fugitive"
     }
+    use {
+        "nvim-lualine/lualine.nvim",
+    }
 end)
