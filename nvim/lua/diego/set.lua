@@ -16,3 +16,5 @@ vim.opt.completeopt = "menu,noinsert,noselect"
 vim.g.mapleader = " "
 
 vim.opt.updatetime = 300
+
+vim.o.termguicolors = true

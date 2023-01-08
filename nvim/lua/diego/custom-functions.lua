@@ -18,5 +18,18 @@ local function inlineDiagnostics()
     end
 end
 
+local function extractRelativeFilePath()
+    local path = vim.fn.expand('%')
+    print(path)
+    vim.fn.setreg('+', path)
+end
+
+local function extractPhysicalFilePath()
+    local path = vim.fn.expand('%:p')
+    vim.fn.setreg("+", path)
+end
+
 _G.InvertWrap = invertWrap()
 _G.InlineDiagnostics = inlineDiagnostics()
+_G.extractRelativeFilePath = extractRelativeFilePath
+_G.extractPhysicalFilePath = extractPhysicalFilePath
