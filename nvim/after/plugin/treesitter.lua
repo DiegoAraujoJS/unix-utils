@@ -2,6 +2,7 @@ local ok, treesitter = pcall(require, 'nvim-treesitter.configs')
 if not ok then
     return
 end
+
 treesitter.setup {
     -- A list of parser names, or "all"
     ensure_installed = { "vim", "lua", "help", "javascript", "typescript", "php" },

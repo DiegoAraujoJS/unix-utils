@@ -29,7 +29,13 @@ local function extractPhysicalFilePath()
     vim.fn.setreg("+", path)
 end
 
+local function extractFileNameNoExtension()
+    local name = vim.fn.expand('%:t')
+    vim.fn.setreg("+", string.match(name, "[^.]*"))
+end
+
 _G.InvertWrap = invertWrap()
 _G.InlineDiagnostics = inlineDiagnostics()
 _G.extractRelativeFilePath = extractRelativeFilePath
 _G.extractPhysicalFilePath = extractPhysicalFilePath
+_G.extractFileNameNoExtension = extractFileNameNoExtension

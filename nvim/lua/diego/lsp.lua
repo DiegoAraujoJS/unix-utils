@@ -1,7 +1,7 @@
 local nnoremap = require("diego.keymap").nnoremap
 local status, nvim_lsp = pcall(require, "lspconfig")
 if not status then
-    return 0
+    return nil
 end
 local util = require("lspconfig/util")
 
@@ -14,9 +14,10 @@ local function keymaps(_, bufnr)
     nnoremap("<leader>h", vim.lsp.buf.hover, bufopts)
     nnoremap("gD", vim.lsp.buf.declaration, bufopts)
     nnoremap("gd", vim.lsp.buf.definition, bufopts)
-    nnoremap("<leader>s", vim.lsp.buf.signature_help, bufopts)
-    nnoremap("<leader>d", vim.lsp.buf.type_definition, bufopts)
     nnoremap("<leader>a", vim.lsp.buf.document_highlight, bufopts)
+    nnoremap("g[", vim.diagnostic.goto_next, bufopts)
+    nnoremap("g]", vim.diagnostic.goto_prev, bufopts)
+    nnoremap("gt", vim.lsp.buf.type_definition, bufopts)
 end
 
 local function highlighting(client, bufnr)
@@ -188,6 +189,8 @@ local servers = {
     jsonls = {},
     bashls = {},
     intelephense = {},
+    vimls = {},
+    tailwindcss = {},
 }
 
 for server_name, _ in pairs(servers) do

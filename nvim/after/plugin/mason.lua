@@ -1,12 +1,14 @@
 local status, mason = pcall(require, 'mason')
-if status then
-    mason.setup({
-        ui = {
-            icons = {
-                package_installed = "✓",
-                package_pending = "➜",
-                package_uninstalled = "✗"
-            }
-        }
-    })
+if not status then
+    return nil
 end
+
+mason.setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
