@@ -1,3 +1,4 @@
+#!/bin/bash
 yes | cp ~/.bashrc .
 yes | cp ~/.xmodmap .
 yes | cp -a ~/.config/nvim/. nvim

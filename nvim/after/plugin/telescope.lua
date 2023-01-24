@@ -1,9 +1,20 @@
 local directoryExists = require("diego.lua-functions").directoryExists
 
+-- local status, telescope = pcall(require, 'telescope')
+-- if not status then
+--     return nil
+-- end
+
 local status, builtin = pcall(require, 'telescope.builtin')
 if not status then
     return nil
 end
+
+-- telescope.setup {
+--     defaults = {
+--         layout_config = { height = 0.95 },
+--     },
+-- }
 
 local keymap = {
     ['<leader>ff'] = builtin.find_files,

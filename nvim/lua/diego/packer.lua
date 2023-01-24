@@ -13,6 +13,9 @@ return require('packer').startup(function()
         'hrsh7th/nvim-cmp'
     }
     use {
+        'hrsh7th/cmp-nvim-lua'
+    }
+    use {
         "L3MON4D3/LuaSnip",
         tag = "v<CurrentMajor>.*",
         requires = { 'hrsh7th/cmp-nvim-lsp' }
@@ -27,4 +30,8 @@ return require('packer').startup(function()
         "nvim-lualine/lualine.nvim",
     }
     use { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } }
+
+    use {
+        'onsails/lspkind.nvim'
+    }
 end)

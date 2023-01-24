@@ -5,11 +5,12 @@ case $- in
 esac
 
 # Path to your oh-my-bash installation.
-export OSH=/home/diego/.oh-my-bash
+export OSH='/home/diego/.oh-my-bash'
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
 OSH_THEME="rr"
- 
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -41,9 +42,16 @@ OSH_THEME="rr"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+# stamp shown in the history command output.  One of the following values can
+# be used to specify the timestamp format.
+# * 'mm/dd/yyyy'     # mm/dd/yyyy + time
+# * 'dd.mm.yyyy'     # dd.mm.yyyy + time
+# * 'yyyy-mm-dd'     # yyyy-mm-dd + time
+# * '[mm/dd/yyyy]'   # [mm/dd/yyyy] + [time] with colors
+# * '[dd.mm.yyyy]'   # [dd.mm.yyyy] + [time] with colors
+# * '[yyyy-mm-dd]'   # [yyyy-mm-dd] + [time] with colors
+# If not set, the default value is 'yyyy-mm-dd'.
+# HIST_STAMPS='yyyy-mm-dd'
 
 # Uncomment the following line if you do not want OMB to overwrite the existing
 # aliases by the default OMB aliases defined in lib/*.sh
@@ -119,25 +127,30 @@ source "$OSH"/oh-my-bash.sh
 # Example aliases
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
-alias t='python2 ~/term-utils/t/t.py --task-dir ~/tasks --list task'
-t
-. ~/term-utils/z/z.sh
-function repos {
-	PS3="Ir a: "
-	files=`ls ~/Documents/repos`
-	select repo_choice in $files ; do
-		if [ ! -z "$repo_choice" ] ; then 
-			repo_dir=~/Documents/repos/$repo_choice
-			cd $repo_dir
-			break
-		fi
-	done
-	nvim .
+
+. /home/diego/term-plugins/z/z.sh
+
+function rpass {
+        while read -r line ; do
+                pass=( "$line" )
+                if [[ ${pass[0]} = "$1" ]] ; then
+                        echo "${pass[1]}"
+                elif [[ -z $1 ]] ; then
+                        echo "${pass[0]}"
+                fi
+        done < ~/Avature/passwords.txt
 }
 
-export PATH=/usr/bin:$PATH
-alias treer='tree -I node_modules'
-alias cpc='xclip -selection clipboard'
-alias luamake=/luamake
-export GO111MODULE=on
-source /etc/profile.d/go.sh
+function randpass {
+        SIZE=${1:-20}
+        SPOOL='a-zA-Z0-9\`\!\@\#\$\%\^\&\~_\*\(\)\{\}\<\>\-\+\=\|\;\:\\'
+        echo "Aa1!$(cat /dev/urandom | tr -dc "$SPOOL" | fold -w "$SIZE" | head -1)"
+}
+function changeGitGlobalConfig {
+    if [[ $(git config --global user.email | grep "diegolaraujo") ]] ; then
+        git config --global user.email "diego.araujo@avature.net"
+    else
+        git config --global user.email "diegolaraujo96@gmail.com"
+    fi
+}
+. "$HOME/.cargo/env"
