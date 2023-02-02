@@ -156,6 +156,8 @@ local servers = {
     intelephense = {},
     vimls = {},
     tailwindcss = {},
+    prismals = {},
+    yamlls = {},
 }
 
 for server_name, _ in pairs(servers) do

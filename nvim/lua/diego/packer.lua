@@ -34,4 +34,12 @@ return require('packer').startup(function()
     use {
         'onsails/lspkind.nvim'
     }
+    use {
+        'nvim-tree/nvim-web-devicons'
+    }
+    use {
+        'romgrk/barbar.nvim',
+        requires = 'nvim-web-devicons',
+        disable = true
+    }
 end)
