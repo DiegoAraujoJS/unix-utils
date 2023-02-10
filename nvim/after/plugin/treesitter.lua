@@ -18,7 +18,13 @@ treesitter.setup {
         -- `false` will disable the whole extension
         enable = true,
 
-        disable = { "javascript" },
+        disable = function(_, _)
+            local path = vim.fn.expand('%:p')
+            if string.match(path, "/iats/code/module.*%.js") then
+                return true
+            end
+            return false
+        end,
 
         additional_vim_regex_highlighting = false,
     },
