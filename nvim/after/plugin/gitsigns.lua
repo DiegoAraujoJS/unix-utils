@@ -25,17 +25,15 @@ gitsigns.setup {
         end, { expr = true })
 
         -- Actions
-        map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>')
-        map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>')
-        map('n', '<leader>hS', gitsigns.stage_buffer)
-        map('n', '<leader>hu', gitsigns.undo_stage_hunk)
-        map('n', '<leader>hR', gitsigns.reset_buffer)
-        map('n', '<leader>hp', gitsigns.preview_hunk)
-        map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end)
-        map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
-        map('n', '<leader>hd', gitsigns.diffthis)
-        map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
-        map('n', '<leader>td', gitsigns.toggle_deleted)
+        map({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<CR>')
+        map({ 'n', 'v' }, '<leader>gr', ':Gitsigns reset_hunk<CR>')
+        map('n', '<leader>gS', gitsigns.stage_buffer)
+        map('n', '<leader>gu', gitsigns.undo_stage_hunk)
+        map('n', '<leader>gR', gitsigns.reset_buffer)
+        map('n', '<leader>gp', gitsigns.preview_hunk)
+        map('n', '<leader>gb', function() gitsigns.blame_line { full = true } end)
+        map('n', '<leader>gtb', gitsigns.toggle_current_line_blame)
+        map('n', '<leader>gtd', gitsigns.toggle_deleted)
 
         -- Text object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
