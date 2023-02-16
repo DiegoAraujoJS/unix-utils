@@ -3,6 +3,13 @@ if not ok then
     return
 end
 
+local directoryExists = require("diego.lua-functions").directoryExists
+local isGitRepository = directoryExists(".git")
+
+if not isGitRepository then
+    return
+end
+
 gitsigns.setup {
     on_attach = function(bufnr)
         local function map(mode, l, r, opts)

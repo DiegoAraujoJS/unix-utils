@@ -62,13 +62,13 @@ end
 
 local function lsp_handlers()
     vim.lsp.handlers["textDocument/signaturehelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        focusable = true,
-        style = "minimal",
-        border = "rounded"
-    })
+            focusable = true,
+            style = "minimal",
+            border = "rounded"
+        })
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false
-    })
+            virtual_text = false
+        })
 end
 
 local function on_attach(client, bufnr)
@@ -113,7 +113,7 @@ local servers = {
             typeCheckingMode = true,
         }
     },
-    sumneko_lua = {
+    lua_ls = {
         settings = {
             Lua = {
                 diagnostics = {

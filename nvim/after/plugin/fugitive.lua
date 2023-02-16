@@ -7,7 +7,6 @@ if isGitRepository then
     vim.keymap.set("n", '<leader>gl', "<cmd>Git log -n 50<CR>", {})
     vim.keymap.set("n", "<leader>gd", "<cmd>Git diff HEAD %<CR>", {})
     vim.keymap.set("n", "<leader>gD", "<cmd>Git diff HEAD<CR>", {})
-    vim.keymap.set("n", "<leader>ga", "<cmd>Git add %<CR>", {})
     vim.keymap.set("n", "<leader>gA", "<cmd>Git add -A<CR>", {})
     vim.keymap.set("n", "<leader>gc", "<cmd>Git commit<CR>", {})
     vim.keymap.set("n", "<leader>gC", "<cmd>Git commit<CR>", {})
