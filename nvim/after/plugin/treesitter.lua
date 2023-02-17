@@ -5,7 +5,7 @@ end
 
 treesitter.setup {
     -- A list of parser names, or "all"
-    ensure_installed = { "vim", "lua", "help", "javascript", "typescript", "php" },
+    ensure_installed = { "vim", "lua", "help", "javascript", "typescript" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -19,10 +19,6 @@ treesitter.setup {
         enable = true,
 
         disable = function(_, _)
-            local path = vim.fn.expand('%:p')
-            if string.match(path, "/iats/code/module.*%.js") then
-                return true
-            end
             return false
         end,
 
