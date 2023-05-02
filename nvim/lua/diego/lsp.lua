@@ -22,7 +22,6 @@ end
 
 local function highlighting(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
-        print("has highlighting")
         local highlighted = false
         vim.api.nvim_create_autocmd("CursorHold", {
             callback = function()
@@ -75,11 +74,8 @@ local function on_attach(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     if client.server_capabilities.definitionProvider then
-        print("has definition provider")
         vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
     end
-
-    print("lsp server active")
 
     -- add server capabilities handlers
     highlighting(client, bufnr)
@@ -139,6 +135,9 @@ local servers = {
             }
         }
     },
+    emmet_ls = {
+        filetypes = { "html", "javascriptreact", "typescriptreact", "svelte", "vue" }
+    },
     tsserver = {
         filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact" },
         cmd = { "typescript-language-server", "--stdio" },
@@ -158,6 +157,9 @@ local servers = {
     tailwindcss = {},
     prismals = {},
     yamlls = {},
+    cssls = {},
+    html = {},
+    rust_analyzer = {},
 }
 
 for server_name, _ in pairs(servers) do

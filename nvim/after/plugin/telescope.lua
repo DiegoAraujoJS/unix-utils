@@ -1,9 +1,11 @@
 local directoryExists = require("diego.lua-functions").directoryExists
 
--- local status, telescope = pcall(require, 'telescope')
--- if not status then
---     return nil
--- end
+local status, telescope = pcall(require, 'telescope')
+if not status then
+    return nil
+end
+
+telescope.load_extension('emoji')
 
 local status, builtin = pcall(require, 'telescope.builtin')
 if not status then
