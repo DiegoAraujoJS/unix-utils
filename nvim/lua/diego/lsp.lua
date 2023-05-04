@@ -15,33 +15,24 @@ local function keymaps(_, bufnr)
     nnoremap("gD", vim.lsp.buf.declaration, bufopts)
     nnoremap("gd", vim.lsp.buf.definition, bufopts)
     nnoremap("<leader>a", vim.lsp.buf.document_highlight, bufopts)
-    nnoremap("g[", vim.diagnostic.goto_next, bufopts)
-    nnoremap("g]", vim.diagnostic.goto_prev, bufopts)
+    nnoremap("[d", vim.diagnostic.goto_next, bufopts)
+    nnoremap("]d", vim.diagnostic.goto_prev, bufopts)
     nnoremap("gt", vim.lsp.buf.type_definition, bufopts)
 end
 
 local function highlighting(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
-        local highlighted = false
         vim.api.nvim_create_autocmd("CursorHold", {
             callback = function()
-                if not highlighted then
-                    vim.schedule(vim.lsp.buf.document_highlight)
-                    highlighted = true
-                end
+                vim.schedule(vim.lsp.buf.document_highlight)
             end,
             buffer = bufnr,
-            group = vim.api.nvim_create_augroup("LspDocumentHighlight", {})
         })
         vim.api.nvim_create_autocmd("CursorMoved", {
             callback = function()
-                if highlighted then
-                    vim.schedule(vim.lsp.buf.clear_references)
-                    highlighted = false
-                end
+                vim.schedule(vim.lsp.buf.clear_references)
             end,
             buffer = bufnr,
-            group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = false })
         })
     end
 end
@@ -104,11 +95,7 @@ local opts = {
 }
 
 local servers = {
-    pyright = {
-        analysis = {
-            typeCheckingMode = true,
-        }
-    },
+    pyright = {},
     lua_ls = {
         settings = {
             Lua = {
@@ -139,7 +126,7 @@ local servers = {
         filetypes = { "html", "javascriptreact", "typescriptreact", "svelte", "vue" }
     },
     tsserver = {
-        filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact" },
+        filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
         cmd = { "typescript-language-server", "--stdio" },
         root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
     },
@@ -156,7 +143,7 @@ local servers = {
     vimls = {},
     tailwindcss = {},
     prismals = {},
-    yamlls = {},
+    docker_compose_language_service = {},
     cssls = {},
     html = {},
     rust_analyzer = {},

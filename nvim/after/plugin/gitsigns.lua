@@ -11,6 +11,7 @@ if not isGitRepository then
 end
 
 gitsigns.setup {
+    signcolumn = false,
     on_attach = function(bufnr)
         local function map(mode, l, r, opts)
             opts = opts or {}

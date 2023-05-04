@@ -43,4 +43,20 @@
 -- 
 -- vim.cmd("colorscheme tokyonight")
 
+local status, catppuccin = pcall(require, 'catppuccin')
+if not status then
+    return nil
+end
+
+catppuccin.setup {
+    flavour = "macchiato",
+    highlight_overrides = {
+        all = function(colors)
+            return {
+                Comment = { fg = "#568203" },
+            }
+        end
+    },
+}
+
 vim.cmd("colorscheme catppuccin")
