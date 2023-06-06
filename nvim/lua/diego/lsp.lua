@@ -18,6 +18,7 @@ local function keymaps(_, bufnr)
     nnoremap("[d", vim.diagnostic.goto_next, bufopts)
     nnoremap("]d", vim.diagnostic.goto_prev, bufopts)
     nnoremap("gt", vim.lsp.buf.type_definition, bufopts)
+    nnoremap("<leader>x", vim.lsp.buf.code_action, bufopts)
 end
 
 local function highlighting(client, bufnr)
@@ -39,10 +40,11 @@ end
 
 local function formatting(client, bufnr)
     if client.server_capabilities.documentFormattingProvider and
-        (vim.bo.filetype ~= "javascript" and vim.bo.filetype ~= "php") then
+        (
+        vim.bo.filetype == "yaml" or vim.bo.filetype == "lua") then
         vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function()
-                vim.lsp.buf.formatting_seq_sync()
+                vim.lsp.buf.format()
             end,
             group = vim.api.nvim_create_augroup("Format", { clear = true }),
             buffer = bufnr,
@@ -70,7 +72,7 @@ local function on_attach(client, bufnr)
 
     -- add server capabilities handlers
     highlighting(client, bufnr)
-    -- formatting(client, bufnr)
+    formatting(client, bufnr)
 
     -- keymaps and other
     lsp_handlers()
@@ -95,7 +97,9 @@ local opts = {
 }
 
 local servers = {
-    pyright = {},
+    pyright = {
+        root_dir = util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt", "Pipfile"),
+    },
     lua_ls = {
         settings = {
             Lua = {
@@ -116,7 +120,7 @@ local servers = {
         settings = {
             gopls = {
                 analyses = {
-                    unusedparams = true
+                    unusedparams = false
                 },
                 staticcheck = true
             }
@@ -147,6 +151,13 @@ local servers = {
     cssls = {},
     html = {},
     rust_analyzer = {},
+    yamlls = {
+        settings = {
+            yaml = {
+                schemas = { kubernetes = "**/kubernetes/**/*.yaml" },
+            }
+        }
+    },
 }
 
 for server_name, _ in pairs(servers) do
