@@ -64,5 +64,5 @@ return require('packer').startup(function()
     use {
         "catppuccin/nvim", as = "catppuccin"
     }
-    use "/Users/diegoaraujo/repos/plugins/git-nav"
+    use 'm4xshen/autoclose.nvim'
 end)
