@@ -138,7 +138,14 @@ local servers = {
         filetypes = { "vue" }
     },
     omnisharp = {
-        cmd = { "dotnet", "/home/diego/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
+        cmd = { "dotnet", "/Users/diegoaraujo/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
+    },
+    yamlls = {
+        settings = {
+            yaml = {
+                schemas = { kubernetes = "**/kubernetes/**/*.yaml" },
+            }
+        }
     },
     dockerls = {},
     jsonls = {},
@@ -151,13 +158,6 @@ local servers = {
     cssls = {},
     html = {},
     rust_analyzer = {},
-    yamlls = {
-        settings = {
-            yaml = {
-                schemas = { kubernetes = "**/kubernetes/**/*.yaml" },
-            }
-        }
-    },
 }
 
 for server_name, _ in pairs(servers) do

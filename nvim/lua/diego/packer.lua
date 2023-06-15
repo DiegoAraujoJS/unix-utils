@@ -65,4 +65,5 @@ return require('packer').startup(function()
         "catppuccin/nvim", as = "catppuccin"
     }
     use 'm4xshen/autoclose.nvim'
+    use 'Mofiqul/vscode.nvim'
 end)
