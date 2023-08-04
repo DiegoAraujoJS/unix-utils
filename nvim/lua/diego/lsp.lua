@@ -97,6 +97,7 @@ local opts = {
 }
 
 local servers = {
+    rust_analyzer = {},
     pyright = {
         root_dir = util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt", "Pipfile"),
     },
@@ -157,7 +158,6 @@ local servers = {
     docker_compose_language_service = {},
     cssls = {},
     html = {},
-    rust_analyzer = {},
 }
 
 for server_name, _ in pairs(servers) do
