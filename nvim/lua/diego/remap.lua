@@ -19,3 +19,6 @@ nnoremap('<leader>cn', '<cmd>lua extractFileNameNoExtension()<CR>') -- copy phys
 -- remap for navigating through buffers
 nnoremap('<C-P>', '<cmd>bprev<CR>')
 nnoremap('<C-N>', '<cmd>bnext<CR>')
+
+-- remap that replaces shift + R to move a file
+vim.api.nvim_set_keymap('n', '<S-R>', [[<Cmd>lua MoveFileToPath()<CR>]], { noremap = true, silent = true })

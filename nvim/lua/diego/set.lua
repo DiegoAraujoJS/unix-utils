@@ -1,4 +1,4 @@
-local tablength = 4
+local tablength = 2
 vim.opt.tabstop = tablength
 vim.opt.softtabstop = tablength
 vim.opt.shiftwidth = tablength
@@ -19,3 +19,14 @@ vim.g.mapleader = " "
 vim.opt.updatetime = 300
 
 vim.o.termguicolors = true
+
+
+-- language specific configurations
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "go",
+  callback = function ()
+    vim.opt.tabstop = 4
+    vim.opt.softtabstop = 4
+    vim.opt.shiftwidth = 4
+  end
+})
