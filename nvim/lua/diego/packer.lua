@@ -64,4 +64,11 @@ return require('packer').startup(function()
   use 'm4xshen/autoclose.nvim'
   use 'Mofiqul/vscode.nvim'
   use 'github/copilot.vim'
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" }
+    }
+  }
 end)
