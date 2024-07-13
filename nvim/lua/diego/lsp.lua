@@ -41,7 +41,7 @@ end
 local function formatting(client, bufnr)
   if client.server_capabilities.documentFormattingProvider and
       (
-      vim.bo.filetype == "yaml" or vim.bo.filetype == "lua") then
+        vim.bo.filetype == "yaml" or vim.bo.filetype == "lua") then
     vim.api.nvim_create_autocmd("BufWritePre", {
       callback = function()
         vim.lsp.buf.format()
@@ -69,6 +69,18 @@ local function on_attach(client, bufnr)
   if client.server_capabilities.definitionProvider then
     vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
   end
+
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = { "*.tex" },
+    group = vim.api.nvim_create_augroup("LspSave", { clear = true }),
+    callback = function()
+      vim.schedule(
+        function()
+          vim.api.nvim_command("TexlabBuild")
+        end
+      )
+    end
+  })
 
   -- add server capabilities handlers
   highlighting(client, bufnr)
@@ -158,6 +170,16 @@ local servers = {
   docker_compose_language_service = {},
   cssls = {},
   html = {},
+  texlab = {
+    settings = {
+      texlab = {
+        build = {
+          executable = "tectonic",
+          args = { "--synctex", "--keep-logs", "--keep-intermediates", "%f" },
+        }
+      }
+    }
+  },
 }
 
 for server_name, _ in pairs(servers) do

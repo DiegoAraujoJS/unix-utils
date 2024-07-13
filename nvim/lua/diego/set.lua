@@ -21,12 +21,15 @@ vim.opt.updatetime = 300
 vim.o.termguicolors = true
 
 
+vim.opt.filetype = "on"
 -- language specific configurations
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "go",
-  callback = function ()
+  callback = function()
     vim.opt.tabstop = 4
     vim.opt.softtabstop = 4
     vim.opt.shiftwidth = 4
   end
 })
+
+vim.g.vimtex_compiler_method = 'tectonic'

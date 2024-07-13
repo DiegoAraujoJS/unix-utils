@@ -12,8 +12,8 @@ nnoremap("<leader>[", "<cmd>vertical resize +5 <CR>")
 nnoremap("<leader>]", "<cmd>vertical resize -5 <CR>")
 
 -- remap for yanking file path or name to the clipboard.
-nnoremap('<leader>cu', '<cmd>lua extractRelativeFilePath()<CR>') -- copy file path relative to repo.
-nnoremap('<leader>cp', '<cmd>lua extractPhysicalFilePath()<CR>') -- copy physical file path.
+nnoremap('<leader>cu', '<cmd>lua extractRelativeFilePath()<CR>')    -- copy file path relative to repo.
+nnoremap('<leader>cp', '<cmd>lua extractPhysicalFilePath()<CR>')    -- copy physical file path.
 nnoremap('<leader>cn', '<cmd>lua extractFileNameNoExtension()<CR>') -- copy physical file path.
 
 -- remap for navigating through buffers
