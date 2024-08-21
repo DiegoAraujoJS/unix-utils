@@ -22,3 +22,16 @@ nnoremap('<C-N>', '<cmd>bnext<CR>')
 
 -- remap that replaces shift + R to move a file
 vim.api.nvim_set_keymap('n', '<S-R>', [[<Cmd>lua MoveFileToPath()<CR>]], { noremap = true, silent = true })
+
+
+-- tmux navigation
+local keys = {
+  { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+  { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+  { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+  { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+}
+
+for _, key in pairs(keys) do
+  nnoremap(key[1], key[2])
+end

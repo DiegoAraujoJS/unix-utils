@@ -50,12 +50,6 @@ return require('packer').startup(function()
     -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
   }
   use {
-    'ziontee113/color-picker.nvim',
-    config = function()
-      require("color-picker")
-    end,
-  }
-  use {
     'xiyaowong/telescope-emoji.nvim'
   }
   use {
@@ -70,5 +64,8 @@ return require('packer').startup(function()
       { "nvim-lua/plenary.nvim" },
       { "nvim-treesitter/nvim-treesitter" }
     }
+  }
+  use {
+    "christoomey/vim-tmux-navigator",
   }
 end)
