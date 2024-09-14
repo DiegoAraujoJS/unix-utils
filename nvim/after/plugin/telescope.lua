@@ -12,12 +12,6 @@ if not status then
   return nil
 end
 
--- telescope.setup {
---     defaults = {
---         layout_config = { height = 0.95 },
---     },
--- }
-
 local keymap = {
   ['<leader>ff'] = builtin.find_files,
   ['<leader>fg'] = builtin.live_grep,
@@ -32,6 +26,8 @@ local keymap = {
 for key, value in pairs(keymap) do
   vim.keymap.set("n", key, value, {})
 end
+
+vim.keymap.set("n", '<leader>fd', require("diego.telescope").find_directories, {})
 
 local isGitRepository = directoryExists(".git")
 

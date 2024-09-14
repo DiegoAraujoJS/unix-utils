@@ -5,6 +5,7 @@ local func = ls.function_node
 local text = ls.text_node
 
 local date = function() return { os.date('%d/%m/%Y') } end
+local datetime = function() return { os.date('%d/%m/%Y %H:%M:%S') } end
 
 ls.add_snippets(nil, {
   all = {
@@ -14,6 +15,13 @@ ls.add_snippets(nil, {
       dscr = "Date in the form of YYYY-MM-DD",
     }, {
       func(date, {}),
+    }),
+    snip({
+      trig = "!datetime",
+      namr = "Datetime",
+      dscr = "Datetime in the form of YYYY-MM-DD HH:MM:SS",
+    }, {
+      func(datetime, {}),
     }),
     snip({
       trig = "!DOCTYPE",
