@@ -143,8 +143,18 @@ source "$OSH"/oh-my-bash.sh
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 alias clip="xclip -selection clipboard"
+alias pt="cd /mnt/patriot"
+alias tree="tree -I node_modules"
 
 . /home/diegoaraujo/terminal-tools/z/z.sh
 
 eval "$(fzf --bash)"
 source /usr/share/nvm/init-nvm.sh
+
+# pnpm
+export PNPM_HOME="/home/diegoaraujo/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

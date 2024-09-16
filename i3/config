@@ -405,7 +405,7 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && ~/.config/i3/bin/wallpaper-changer --random
+exec --no-startup-id sleep 1 && ~/.config/i3/bin/wallpaper-changer --wallpapers="/mnt/patriot/pictures/wallpapers" --random
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -612,7 +612,7 @@ exec --no-startup-id copyq
 ###
 bindsym $mod+Shift+s exec --no-startup-id  "systemctl suspend"
 
-bindsym $mod+Shift+w exec --no-startup-id ~/.config/i3/bin/wallpaper-changer
+bindsym $mod+Shift+w exec --no-startup-id ~/.config/i3/bin/wallpaper-changer --wallpapers="/mnt/patriot/pictures/wallpapers"
 
 # set the key repetition speed.
 exec --no-startup-id xset r rate 250 60

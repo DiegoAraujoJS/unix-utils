@@ -142,7 +142,7 @@ local servers = {
   emmet_ls = {
     filetypes = { "html", "javascriptreact", "typescriptreact", "svelte", "vue" }
   },
-  tsserver = {
+  ts_ls = {
     filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
     cmd = { "typescript-language-server", "--stdio" },
     root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
@@ -165,7 +165,9 @@ local servers = {
   bashls = {},
   intelephense = {},
   vimls = {},
-  tailwindcss = {},
+  tailwindcss = {
+    filetypes = { "html", "typescriptreact", "javascriptreact" }
+  },
   prismals = {},
   docker_compose_language_service = {},
   cssls = {},
