@@ -19,6 +19,7 @@ local function keymaps(_, bufnr)
   nnoremap("]d", vim.diagnostic.goto_prev, bufopts)
   nnoremap("gt", vim.lsp.buf.type_definition, bufopts)
   nnoremap("<leader>x", vim.lsp.buf.code_action, bufopts)
+  nnoremap("<leader>rn", vim.lsp.buf.rename, bufopts)
 end
 
 local function highlighting(client, bufnr)
@@ -182,6 +183,7 @@ local servers = {
       }
     }
   },
+  arduino_language_server = {},
 }
 
 for server_name, _ in pairs(servers) do
